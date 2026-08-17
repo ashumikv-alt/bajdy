@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bajdy.by — Прокат Эмоций, Организация Впечатлений</title>
+  
+  <!-- Подключаем шрифт Montserrat и иконки для нижнего бара -->
+  <link href="https://googleapis.com" rel="stylesheet">
+  <link rel="stylesheet" href="https://cloudflare.com">
+
+  <style>
+    /* ОБЩИЕ НАСТРОЙКИ */
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Montserrat', sans-serif !important;
+      background-image: url("images/background.jpg"); /* Путь к вашей фоновой картинке с закатом и каякером */
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
+      color: #ffffff;
+      height: 100vh;
+      overflow-x: hidden;
+      box-sizing: border-box;
+    }
+
+    /* ВЕРХНИЙ НАВБАР (МЕНЮ) */
+    .top-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 30px 50px;
+    }
+
+    .menu-links {
+      display: flex;
+      gap: 110px; /* Отступы между пунктами меню */
+    }
+
+    .menu-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 5px; /* Растянутый текст букв */
+      text-transform: uppercase; /* Все буквы заглавные */
+      transition: color 0.3s ease;
+    }
+
+    /* Бирюзовые пункты меню как на скриншоте */
+    .menu-links a.cyan-link {
+      color: #40e0d0; 
+    }
+
+    .menu-links a:hover {
+      color: #ff7b00; /* Оранжевый при наведении */
+    }
+
+    /* Иконка три полоски (бургер) справа */
+    .burger-icon {
+      color: #080000;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    /* ОСНОВНОЙ КОНТЕНТ (ЦЕНТРАЛЬНЫЙ БЛОК) */
+    .content-container {
+      max-width: 1300px;
+      margin: 50px auto 0 auto;
+      padding: 0 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    /* ЛЕВЫЙ БЛОК: ГЛАВНЫЙ ЗАГОЛОВОК */
+    .left-hero {
+      max-width: 600px;
+        flex: 1; /* Даем блоку распределить пространство */
+  /* 🌟 МАГИЯ ЦЕНТРИРОВАНИЯ ТУТ: */
+  text-align: center !important; 
+    }
+
+    .hero-title {
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 1.1; /* Уплотненное расстояние между строчками */
+      margin: 0;
+      letter-spacing: 0.5px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    /* Бирюзовые слова в заголовке */
+    .hero-title span {
+      color: #40e0d0;
+    }
+
+    /* ПРАВЫЙ БЛОК: СПИСОК УСЛУГ */
+    .right-info {
+      max-width: 450px;
+      margin-top: 10px;
+      flex: 1 !important;      
+      text-align: left !important; 
+      display: flex !important;
+      justify-content: flex-start !important; /* Толкает содержимое влево */
+    }
+
+    .services-list {
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.2; /* Компактные строчки */
+      margin: 0;
+      color: #e0e0e0;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+      text-align: left !important; 
+    }
+
+    /* НИЖНИЙ НАВБАР (ПОДВАЛ) */
+    .bottom-navbar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end; /* Прижимает элементы к самому низу */
+      padding: 0 50px 30px 50px;
+      box-sizing: border-box;
+      z-index: 10;
+    }
+
+    /* Контакты слева */
+    .footer-contacts {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .footer-contacts i {
+      font-size: 20px;
+      color: #ffffff;
+    }
+
+    .footer-contacts a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /* Примечание P.S. справа в несколько строчек */
+    .footer-ps {
+      text-align: Left;
+      max-width: 300px;
+    }
+
+    .footer-ps .ps-head {
+      font-size: 12px;
+      font-weight: 500;
+      margin-bottom: 5px;
+      color: #b0b0b0;
+    }
+
+    .footer-ps .ps-text {
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.2;
+      color: #e0e0e0;
+    }
+
+    /* АДАПТИВНОСТЬ ДЛЯ ТЕЛЕФОНОВ */
+    @media (max-width: 900px) {
+      .top-navbar {
+        padding: 20px;
+      }
+      .menu-links {
+        display: none; /* Прячем обычное меню на мобилках, оставляем бургер */
+      }
+      .content-container {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 30px;
+        margin-top: 20px;
+      }
+      .hero-title {
+        font-size: 30px;
+      }
+      .services-list {
+        font-size: 18px;
+      }
+      .bottom-navbar {
+        position: relative;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 40px 20px;
+        background-color: rgba(0,0,0,0.5);
+      }
+      .footer-ps {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ВЕРХНЯЯ ПАНЕЛЬ: МЕНЮ -->
+  <nav class="top-navbar">
+    <div class="menu-links">
+      <a href="#">Аренда</a>
+      <a href="#" class="cyan-link">Сплавы</a>
+      <a href="#">Походы</a>
+      <a href="#" class="cyan-link">Условия</a>
+      <a href="#">О нас</a>
+      <a href="#" class="cyan-link">Контакты</a>
+    </div>
+    <!-- Иконка меню-гамбургера справа -->
+    <div class="burger-icon">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </nav>
+
+  <!-- ОСНОВНОЙ ТЕКСТ ПО ЦЕНТРУ ЭКРАНА -->
+  <main class="content-container">
+    <!-- Левая сторона -->
+    <div class="left-hero">
+      <h1 class="hero-title">
+        Прокат <span>Эмоций</span><br>
+        Организация <span>Впечатлений</span>
+      </h1>
+    </div>
+    
+    <!-- Правая сторона -->
+    <div class="right-info">
+      <p class="services-list">
+        Аренда байдарок<br>
+        Организация сплавов<br>
+        Пешие походы<br>
+        И многое другое..
+      </p>
+    </div>
+  </main>
+
+  <!-- НИЖНЯЯ ПАНЕЛЬ -->
+  <footer class="bottom-navbar">
+    <!-- Левая сторона подвала: Контакты -->
+    <div class="footer-contacts">
+      <i class="fa-solid fa-phone"></i>
+      <i class="fa-solid fa-paper-plane"></i>
+      <a href="https://instagram.com" target="_blank">@bajdy.by</a>
+    </div>
+
+    <!-- Правая сторона подвала: P.S. -->
+    <div class="footer-ps">
+      <div class="ps-head">P.S.</div>
+      <div class="ps-text">Сворачивайте не туда <br> и вы узнаете много нового..</div>
+    </div>
+  </footer>
+
+</body>
+</html>
